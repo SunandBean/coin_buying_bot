@@ -1,0 +1,7 @@
+{
+    "access_key":"your_access_key_from_upbit_openapi",
+    "secret_key":"your_secret_key_from_upbit_openapi",
+    "send_mail_address":"your_google_mail",
+    "send_mail_password":"your_app_password_of_google_mail",
+    "receiver":"mail_address_where_you_want_to_send"
+}
