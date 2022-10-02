@@ -54,3 +54,8 @@ cd coin_buying_bot && pip install -r requirements.txt
     # m h  dom mon dow   command
     0 9 * * * /home/ubuntu/upbit_buying_bot/run_bot.sh
     ```
+
+
+# TODO
+[] make ticker list in configuration and use this information in the bot
+[] make order amount(price) list in configuration
