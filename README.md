@@ -1,0 +1,1 @@
+# Coin bot - Automatically buying coin using Upbit
