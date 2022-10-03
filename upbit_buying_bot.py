@@ -20,7 +20,9 @@ def check_order(order_list : list):
     return True
 
 if __name__ == "__main__":
-    config = json.loads("config.json")
+    file_path = "./config.json"
+    with open(file_path, 'r') as file:
+        config = json.load(file)
 
     upbit = pyupbit.Upbit(config["access_key"], config["secret_key"])
 
@@ -38,7 +40,7 @@ if __name__ == "__main__":
         mail_contents = "코인 매수 봇 알림! \n - 주문에 필요한 원화가 부족합니다. 원화를 입금 해주세요!"
         msg = MIMEText(mail_contents + signature)
         msg['Subject'] =  "[코인 매수 봇] 알림! 원화 입금이 필요합니다!"
-        session.sendmail(config["send_mail_address"], config["send_mail_password"], msg.as_string())
+        session.sendmail(config["send_mail_address"], config["receiver"], msg.as_string())
     else:
         order_contents = "아래와 같이 주문했습니다! \n\n [주문 내역] \n"
         for ticker in ticker_list:
@@ -51,7 +53,7 @@ if __name__ == "__main__":
         
         order_msg = MIMEText(order_contents + signature)
         order_msg['Subject'] =  "[코인 매수 봇] 자동 매수 주문을 완료했습니다!"
-        session.sendmail(config["send_mail_address"], config["send_mail_password"], order_msg.as_string())
+        session.sendmail(config["send_mail_address"], config["receiver"], order_msg.as_string())
         
         # 체결 여부 확인
         result_contents = "아래와 같이 체결됐습니다! \n\n [체결 내역] \n"
@@ -77,7 +79,7 @@ if __name__ == "__main__":
         else:
             result_msg['Subject'] =  "[코인 매수 봇] 모든 주문이 체결됐습니다!"
 
-        session.sendmail(config["send_mail_address"], config["send_mail_password"], result_msg.as_string())
+        session.sendmail(config["send_mail_address"], config["receiver"], result_msg.as_string())
     
     session.quit()
 
