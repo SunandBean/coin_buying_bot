@@ -63,7 +63,7 @@ if __name__ == "__main__":
                 result = upbit.get_order(ticker, state="done")[0]
                 result_contents += ticker \
                             + "\n - 체결 시점 시장가 (KRW): " + str(result["price"]) \
-                            + "\n - 체결된 양 (KRW): " + str(result["volume"]) \
+                            + "\n - 체결된 양 (KRW): " + str(result["executed_volume"]) \
                             + "\n - 수수료 (KRW): " + str(result["paid_fee"]) \
                             + "\n\n"
             else:
